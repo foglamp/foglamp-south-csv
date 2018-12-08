@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.4.0)
 
 # Set the plugin name to build
-project(Korea)
+project(Csv)
 
 # Supported options:
 # -DFOGLAMP_INCLUDE
@@ -36,7 +36,7 @@ if (NOT FOGLAMP_FOUND)
 	# Stop the build process
 	message(FATAL_ERROR "FogLAMP plugin '${PROJECT_NAME}' build error.")
 endif()
-# On success, FOGLAMP_INCLUDE_DIRS and FOGLAMP_LIB_DIRS variables are set 
+# On success, FOGLAMP_INCLUDE_DIRS and FOGLAMP_LIB_DIRS variables are set
 
 # Add ./include
 include_directories(include)
@@ -57,7 +57,7 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES})
 target_link_libraries(${PROJECT_NAME} ${NEEDED_FOGLAMP_LIBS})
 # Add additional libraries
 #target_link_libraries(${PROJECT_NAME} ${ADD_LIBS})
-# Set the build version 
+# Set the build version
 set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1)
 
 set(FOGLAMP_INSTALL "" CACHE INTERNAL "")

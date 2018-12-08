@@ -1,5 +1,5 @@
-#ifndef _KOREA_H
-#define _KOREA_H
+#ifndef _CSV_H
+#define _CSV_H
 /*
  * FogLAMP south service plugin
  *
@@ -13,10 +13,10 @@
 #include <config_category.h>
 
 
-class Korea {
+class Csv {
 	public:
-		Korea();
-		~Korea();
+		Csv();
+		~Csv();
 		Reading		nextValue();
 	void	setAssetName(const std::string& assetName)
 		{

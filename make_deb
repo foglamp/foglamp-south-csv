@@ -22,8 +22,8 @@
 set -e
 
 plugin_type="south"
-plugin_name="Korean"
-plugin_install_dirname="Korean"
+plugin_name="Csv"
+plugin_install_dirname="Csv"
 usage="$(basename "$0") {x86|arm} [help|clean|cleanall]
 This script is used to create the Debian package of FoglAMP C++ '${plugin_name}' ${plugin_type} plugin
 Arguments:
