@@ -52,7 +52,7 @@ char	buffer[80], *ptr;
 int	ch;
 
 	ptr = buffer;
-	while ((ch = fgetc(m_fp)) != EOF && ch != ','
+	while ((ch = fgetc(m_fp)) != EOF && ! (ch == '\n' || ch == ',')
 				 && ptr - buffer < sizeof(buffer))
 	{
 		*ptr++ = ch;
