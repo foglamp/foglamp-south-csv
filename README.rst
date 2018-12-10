@@ -1,10 +1,10 @@
-FogLAMP "Korean" C++ South plugin
+FogLAMP "Csv" C++ South plugin
 
-Simple plugin to consume the CSV files used in the Korean demo sprint
+Simple plugin to consume the CSV files used in the Csv demo sprint
 
 Build
 ----
-To build FogLAMP Korean C++ South plugin:
+To build FogLAMP Csv C++ South plugin:
 
 .. code-block:: console
 
@@ -19,16 +19,16 @@ To build FogLAMP Korean C++ South plugin:
   FOGLAMP_ROOT directory.
   Please note that you must first run 'make' in the FOGLAMP_ROOT directory.
 
-You may also pass one or more of the following options to cmake to override 
+You may also pass one or more of the following options to cmake to override
 this default behaviour:
 
 - **FOGLAMP_SRC** sets the path of a FogLAMP source tree
 - **FOGLAMP_INCLUDE** sets the path to FogLAMP header files
 - **FOGLAMP_LIB sets** the path to FogLAMP libraries
-- **FOGLAMP_INSTALL** sets the installation path of Korean plugin
+- **FOGLAMP_INSTALL** sets the installation path of Csv plugin
 
 NOTE:
- - The **FOGLAMP_INCLUDE** option should point to a location where all the FogLAMP 
+ - The **FOGLAMP_INCLUDE** option should point to a location where all the FogLAMP
    header files have been installed in a single directory.
  - The **FOGLAMP_LIB** option should point to a location where all the FogLAMP
    libraries have been installed in a single directory.
@@ -63,10 +63,10 @@ Examples:
   $ cmake -DFOGLAMP_INSTALL=/usr/local/foglamp ..
 
 ******************************
-Packaging for 'Korean' south
+Packaging for 'Csv' south
 ******************************
 
-This repo contains the scripts used to create a foglamp-south-korean Debian package.
+This repo contains the scripts used to create a foglamp-south-csv Debian package.
 
 The make_deb script
 ===================
@@ -77,7 +77,7 @@ Run the make_deb command after compiling the plugin:
 
   $ ./make_deb help
   make_deb {x86|arm} [help|clean|cleanall]
-  This script is used to create the Debian package of FoglAMP C++ 'korean' south plugin
+  This script is used to create the Debian package of FoglAMP C++ 'csv' south plugin
   Arguments:
    help     - Display this help text
    x86      - Build an x86_64 package
@@ -94,15 +94,15 @@ Finally, run the ``make_deb`` command:
 .. code-block:: console
 
    $ ./make_deb
-   The package root directory is   : /home/ubuntu/source/foglamp-south-korean
+   The package root directory is   : /home/ubuntu/source/foglamp-south-csv
    The FogLAMP required version    : >=1.4
-   The package will be built in    : /home/ubuntu/source/foglamp-south-korean/packages/build
+   The package will be built in    : /home/ubuntu/source/foglamp-south-csv/packages/build
    The architecture is set as      : x86_64
-   The package name is             : foglamp-south-korean-1.0.0-x86_64
+   The package name is             : foglamp-south-csv-1.0.0-x86_64
 
    Populating the package and updating version file...Done.
    Building the new package...
-   dpkg-deb: building package 'foglamp-south-korean' in 'foglamp-south-korean-1.0.0-x86_64.deb'.
+   dpkg-deb: building package 'foglamp-south-csv' in 'foglamp-south-csv-1.0.0-x86_64.deb'.
    Building Complete.
    $
 

@@ -7,7 +7,7 @@
  *
  * Author: Mark Riddoch
  */
-#include <korea.h>
+#include <csv.h>
 #include <config_category.h>
 #include <reading.h>
 #include <stdio.h>
@@ -17,20 +17,20 @@
 using namespace std;
 
 /**
- * Constructor for the korea "sensor"
+ * Constructor for the csv "sensor"
  */
-Korea::Korea()
+Csv::Csv()
 {
 }
 
 /**
- * Destructor for the korea "sensor"
+ * Destructor for the csv "sensor"
  */
-Korea::~Korea()
+Csv::~Csv()
 {
 }
 
-void Korea::configure(ConfigCategory *config)
+void Csv::configure(ConfigCategory *config)
 {
 	setAssetName(config->getValue("asset"));
 	setFile(config->getValue("file"));
@@ -43,16 +43,16 @@ void Korea::configure(ConfigCategory *config)
 }
 
 /**
- * Take a reading from the korea "sensor"
+ * Take a reading from the csv "sensor"
  */
-Reading	Korea::nextValue()
+Reading	Csv::nextValue()
 {
 double	val;
 char	buffer[80], *ptr;
 int	ch;
 
 	ptr = buffer;
-	while ((ch = fgetc(m_fp)) != EOF && ch != ','
+	while ((ch = fgetc(m_fp)) != EOF && ! (ch == '\n' || ch == ',')
 				 && ptr - buffer < sizeof(buffer))
 	{
 		*ptr++ = ch;

@@ -7,7 +7,7 @@
  *
  * Author: Mark Riddoch
  */
-#include <korea.h>
+#include <csv.h>
 #include <plugin_api.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,7 +19,7 @@
 
 using namespace std;
 
-#define PLUGIN_NAME "Korea"
+#define PLUGIN_NAME "Csv"
 #define CONFIG	"{\"plugin\" : { \"description\" : \"" PLUGIN_NAME " C south plugin\", " \
 			"\"type\" : \"string\", \"default\" : \"" PLUGIN_NAME "\" }, " \
 		"\"asset\" : { \"description\" : \"Asset name\", " \
@@ -27,9 +27,9 @@ using namespace std;
 		"\"file\" : { \"description\" : \"Name of the file to read\", " \
 			"\"type\" : \"string\", \"default\" : \"\" }" \
 		"} "
-		  
+
 /**
- * The Korea plugin interface
+ * The Csv plugin interface
  */
 extern "C" {
 
@@ -58,11 +58,11 @@ PLUGIN_INFORMATION *plugin_info()
  */
 PLUGIN_HANDLE plugin_init(ConfigCategory *config)
 {
-Korea *korea = new Korea();
+Csv *csv = new Csv();
 
-	korea->configure(config);
+	csv->configure(config);
 
-	return (PLUGIN_HANDLE)korea;
+	return (PLUGIN_HANDLE)csv;
 }
 
 /**
@@ -77,9 +77,9 @@ void plugin_start(PLUGIN_HANDLE *handle)
  */
 Reading plugin_poll(PLUGIN_HANDLE *handle)
 {
-Korea *korea = (Korea *)handle;
+Csv *csv = (Csv *)handle;
 
-	return korea->nextValue();
+	return csv->nextValue();
 }
 
 /**
@@ -87,10 +87,10 @@ Korea *korea = (Korea *)handle;
  */
 void plugin_reconfigure(PLUGIN_HANDLE *handle, string& newConfig)
 {
-ConfigCategory	config("korea", newConfig);
-Korea		*korea = (Korea *)handle;
+ConfigCategory	config("csv", newConfig);
+Csv		*csv = (Csv *)handle;
 
-	korea->configure(&config);
+	csv->configure(&config);
 }
 
 /**
@@ -98,8 +98,8 @@ Korea		*korea = (Korea *)handle;
  */
 void plugin_shutdown(PLUGIN_HANDLE *handle)
 {
-Korea *korea = (Korea *)handle;
+Csv *csv = (Csv *)handle;
 
-	delete korea;
+	delete csv;
 }
 };

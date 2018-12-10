@@ -28,7 +28,7 @@
 set -e
 
 set_files_ownership () {
-    chown -R root:root /usr/local/foglamp/plugins/south/Korea
+    chown -R root:root /usr/local/foglamp/plugins/south/Csv
 }
 
 set_files_ownership
