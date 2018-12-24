@@ -21,11 +21,11 @@ using namespace std;
 
 #define PLUGIN_NAME "Csv"
 #define CONFIG	"{\"plugin\" : { \"description\" : \"" PLUGIN_NAME " C south plugin\", " \
-			"\"type\" : \"string\", \"default\" : \"" PLUGIN_NAME "\" }, " \
+			"\"type\" : \"string\", \"default\" : \"" PLUGIN_NAME "\", \"readonly\" : \"true\" }, " \
 		"\"asset\" : { \"description\" : \"Asset name\", " \
-			"\"type\" : \"string\", \"default\" : \"Vibration\" }," \
+			"\"type\" : \"string\", \"default\" : \"Vibration\", \"order\": \"1\", \"displayName\": \"Asset Name\" }," \
 		"\"file\" : { \"description\" : \"Name of the file to read\", " \
-			"\"type\" : \"string\", \"default\" : \"\" }" \
+			"\"type\" : \"string\", \"default\" : \"\", \"order\": \"2\", \"displayName\": \"Path Of File\" }" \
 		"} "
 
 /**
