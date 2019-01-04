@@ -88,7 +88,7 @@ Csv *csv = (Csv *)handle;
 void plugin_reconfigure(PLUGIN_HANDLE *handle, string& newConfig)
 {
 ConfigCategory	config("csv", newConfig);
-Csv		*csv = (Csv *)handle;
+Csv		*csv = (Csv *)*handle;
 
 	csv->configure(&config);
 }
