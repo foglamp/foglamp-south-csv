@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <logger.h>
+#include <stdexcept>
 
 using namespace std;
 
