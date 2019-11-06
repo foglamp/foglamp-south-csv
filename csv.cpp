@@ -48,12 +48,12 @@ void Csv::configure(ConfigCategory *config)
  */
 Reading	Csv::nextValue()
 {
-double	val;
+double	val1=0.0, val2=0.0;
 char	buffer[80], *ptr;
-int	ch;
+int ch;
 
 	ptr = buffer;
-	while ((ch = fgetc(m_fp)) != EOF && ! (ch == '\n' || ch == ',')
+	while ((ch = fgetc(m_fp)) != EOF && ! (ch == '\n')
 				 && ptr - buffer < sizeof(buffer))
 	{
 		*ptr++ = ch;
@@ -62,8 +62,31 @@ int	ch;
 	if (ch == EOF)
 	{
 		fseek(m_fp, 0L, SEEK_SET);
+		Logger::getLogger()->info("Reached EOF, resetting file pointer to beginning of csv file");
 	}
-	val = strtof(buffer, NULL);
-	DatapointValue value(val);
-	return Reading(m_asset,new Datapoint(m_asset, value));
+	
+	val1 = strtof(buffer, NULL);
+	char* c = strchr(buffer, ',');
+	if (c)
+	{
+		c++;
+		val2 = strtof(c, NULL);
+	}
+	else
+	{
+		DatapointValue dpv1((double) 0.0);
+		Reading reading(m_asset, new Datapoint("ch1", dpv1));
+		DatapointValue dpv2((double) 0.0);
+		reading.addDatapoint(new Datapoint("ch2", dpv2));
+		return reading;
+	}
+	
+	DatapointValue dpv1((double) val1);
+	Reading reading(m_asset, new Datapoint("ch1", dpv1));
+	DatapointValue dpv2((double) val2);
+	reading.addDatapoint(new Datapoint("ch2", dpv2));
+	
+	// Logger::getLogger()->info("reading=%s", reading.toJSON().c_str());
+	
+	return reading;
 }
