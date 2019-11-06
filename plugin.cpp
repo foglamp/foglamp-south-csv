@@ -21,13 +21,42 @@
 using namespace std;
 
 #define PLUGIN_NAME "Csv"
-#define CONFIG	"{\"plugin\" : { \"description\" : \"" PLUGIN_NAME " C south plugin\", " \
-			"\"type\" : \"string\", \"default\" : \"" PLUGIN_NAME "\", \"readonly\" : \"true\" }, " \
-		"\"asset\" : { \"description\" : \"Asset name\", " \
-			"\"type\" : \"string\", \"default\" : \"Vibration\", \"order\": \"1\", \"displayName\": \"Asset Name\" }," \
-		"\"file\" : { \"description\" : \"Name of the file to read\", " \
-			"\"type\" : \"string\", \"default\" : \"\", \"order\": \"2\", \"displayName\": \"Path Of File\" }" \
-		"} "
+const char *default_config = QUOTE({
+		"plugin" : {
+			"description" : PLUGIN_NAME,
+			"type" : "string",
+		       	"default" : PLUGIN_NAME,
+			"readonly" : "true"
+			},
+		"asset" : {
+			"description" : "Asset name",
+			"type" : "string",
+			"default" : "Vibration",
+			"order": "1",
+			"displayName": "Asset Name"
+			},
+		"datapoint" : {
+			"description" : "Datapoint name/prefix",
+			"type" : "string",
+			"default" : "ch",
+			"order": "2",
+			"displayName": "Datapoint"
+			},
+		"multicolumn" : {
+			"description" : "Multiple Column CSV file",
+			"type" : "boolean",
+			"default" : "false",
+			"order": "3",
+			"displayName": "Multi-Column"
+			},
+		"file" : {
+			"description" : "Name of the file to read",
+			"type" : "string",
+		       	"default" : "",
+			"order": "4",
+		       	"displayName": "Path Of File"
+			}
+		});
 
 /**
  * The Csv plugin interface
@@ -43,7 +72,7 @@ static PLUGIN_INFORMATION info = {
 	0,    			  // Flags
 	PLUGIN_TYPE_SOUTH,        // Type
 	"1.0.0",                  // Interface version
-	CONFIG                    // Default configuration
+	default_config            // Default configuration
 };
 
 /**
